@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -26,7 +26,7 @@ function App() {
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);
   const [isInfoTootlipOpen, setIsInfoTootlipOpen] = useState(false);
-  const [TooltipStatus, setTooltipStatus] = useState(false);
+  const [tooltipStatus, setTooltipStatus] = useState(false);
   // user data states
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -49,11 +49,6 @@ function App() {
 
   const navigate = useNavigate();
 
-  /*
-  localStorage.removeItem('index');
-  localStorage.removeItem('articles');
-  localStorage.removeItem('search');
-  */
   useEffect(() => {
     localStorage.setItem('index', searchIndex);
   }, [searchIndex]);
@@ -132,8 +127,14 @@ function App() {
   // log out
   const handlelogOut = () => {
     localStorage.removeItem('jwt');
+    localStorage.removeItem('index');
+    localStorage.removeItem('articles');
+    localStorage.removeItem('search');
+    setToken(undefined);
     setIsLoggedIn(false);
+    setSearchIndex(3);
     setArticle([]);
+    navigate('/');
   };
   // search form submit
   const onSearch = (search) => {
@@ -204,12 +205,13 @@ function App() {
     setIsSignUpPopupOpen(true);
   };
 
-  const closeAllPopups = () => {
+  const closeAllPopups = useCallback(() => {
     setIsSignInPopupOpen(false);
     setIsSignUpPopupOpen(false);
     setIsInfoTootlipOpen(false);
     navigate('/');
-  };
+  }, [navigate]);
+
   // close popups by esc or click outside
   useEffect(() => {
     const closeByEscape = (e) => {
@@ -229,7 +231,7 @@ function App() {
       document.removeEventListener('keydown', closeByEscape);
       document.removeEventListener('click', closeByOverlay);
     };
-  });
+  }, [closeAllPopups]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -287,7 +289,7 @@ function App() {
               <InfoTooltip
                 isOpen={isInfoTootlipOpen}
                 onClose={closeAllPopups}
-                TooltipStatus={TooltipStatus}
+                tooltipStatus={tooltipStatus}
                 onSignInCLick={handleSignInCLick}
                 onSignUpCLick={handleSignUpCLick}
               />

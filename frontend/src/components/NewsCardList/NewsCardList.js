@@ -10,7 +10,7 @@ function NewsCardList(props) {
   const articles = useContext(ArticleContext);
   // the user's saved card
   const [cards, setCards] = useState(props.savedNewsArticle);
-
+  
   const handleDeleteCard = (cardToDelete) => {
     props.removeCard(cardToDelete);
     cards && setCards(cards.filter((item) => item !== cardToDelete));

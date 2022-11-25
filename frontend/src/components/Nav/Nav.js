@@ -76,7 +76,7 @@ function Nav(props) {
           Saved news
         </NavLink>
         <NavLink
-          to='signin'
+          to={isLoggedIn ? '/' : 'signin'}
           className={(state) => setButton(state.isActive)}
           onClick={isLoggedIn ? props.onLogOut : props.onSignIn}
         >

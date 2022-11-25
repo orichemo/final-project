@@ -1,6 +1,6 @@
 import './NewsCard.css';
 import { useLocation } from 'react-router-dom';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { SavedNewsArticle } from '../../contexts/ArticleContext';
 import { isLoggedInContext } from '../../contexts/CurrentUserContext';
 
@@ -8,11 +8,15 @@ function NewsCard(props) {
   const [isShown, setIsShown] = useState(false);
   const isLoggedIn = useContext(isLoggedInContext);
   const articles = useContext(SavedNewsArticle);
+
   const currentPage = useLocation().pathname;
 // check if the card saved by the user
-  const [buttonColor, setButtonColor] = useState(
-    articles.some((article) => article.title === props.card.title)
-  );
+  const [buttonColor, setButtonColor] = useState(false);
+
+  useEffect(()=>{
+    setButtonColor(articles.some((article) => article.title === props.card.title))
+  },[articles, props.card.title ])
+
   const buttonClassName = `card__save-button ${buttonColor && 'card__save-button_blue'}`;
 
   // set the keyword format  

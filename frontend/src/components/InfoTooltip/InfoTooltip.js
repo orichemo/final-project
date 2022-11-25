@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function InfoTooltip({ isOpen, onClose, TooltipStatus, onSignInCLick }) {
+function InfoTooltip({ isOpen, onClose, tooltipStatus, onSignInCLick }) {
   const handelLinkCLick = () => {
     onClose();
     onSignInCLick();
@@ -19,7 +19,7 @@ function InfoTooltip({ isOpen, onClose, TooltipStatus, onSignInCLick }) {
         <div className='popup__tooltip-content'>
           <h2 className='popup__title popup__title_type_tool-tip'>
             {
-              TooltipStatus
+              tooltipStatus
                 ? 'Registration successfully completed!' // only for sign up
                 : 'Oops, authorization faild Please try again.' // only for sign in
             }
@@ -27,7 +27,7 @@ function InfoTooltip({ isOpen, onClose, TooltipStatus, onSignInCLick }) {
           <Link to='/signin' className='form__link' onClick={handelLinkCLick}>
             {
               // sign-in after register or try again after sign in faild
-              TooltipStatus ? 'Sign in' : 'Try again' 
+              tooltipStatus ? 'Sign in' : 'Try again'
             }
           </Link>
         </div>

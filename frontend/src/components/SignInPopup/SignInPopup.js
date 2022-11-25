@@ -3,12 +3,13 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import { useFormWithValidation } from '../../utils/Validation';
 
 function SignInPopup(props) {
-  const validation = new useFormWithValidation();
+  const { errors, handleChange, isValid, resetForm, values } =
+    useFormWithValidation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.onLogin(validation.values);
-    validation.resetForm();
+    props.onLogin(values);
+    resetForm();
   };
 
   return (
@@ -20,7 +21,7 @@ function SignInPopup(props) {
       onClose={props.onClose}
       onSubmit={handleSubmit}
       onLinkClick={props.onLinkClick}
-      disabledButton={!validation.isValid}
+      disabledButton={!isValid}
     >
       <label className='form__label'>
         Email
@@ -28,18 +29,18 @@ function SignInPopup(props) {
           required
           id='email-signin'
           name='email'
-          value={validation.values.email || ''}
+          value={values.email || ''}
           type='email'
-          onChange={(e) => validation.handleChange(e)}
+          onChange={(e) => handleChange(e)}
           className='form__input'
           placeholder='Enter email'
         />
         <span
           className={`form__input-error name-error ${
-            validation.errors.email && 'form__input-error_visible'
+            errors.email && 'form__input-error_visible'
           }`}
         >
-          {validation.errors.email}
+          {errors.email}
         </span>
       </label>
       <label className='form__label'>
@@ -49,18 +50,18 @@ function SignInPopup(props) {
           id='password-signin'
           name='password'
           type='password'
-          value={validation.values.password || ''}
-          onChange={(e) => validation.handleChange(e)}
+          value={values.password || ''}
+          onChange={(e) => handleChange(e)}
           minLength='8'
           className='form__input'
           placeholder='Enter password'
         />
         <span
           className={`form__input-error password-error ${
-            validation.errors.password && 'form__input-error_visible'
+            errors.password && 'form__input-error_visible'
           }`}
         >
-          {validation.errors.password}
+          {errors.password}
         </span>
       </label>
     </PopupWithForm>

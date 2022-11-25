@@ -3,15 +3,16 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import { useFormWithValidation } from '../../utils/Validation';
 
 function SignUpPopup(props) {
-  const validation = new useFormWithValidation();
+  const { errors, handleChange, isValid, resetForm, values } =
+    useFormWithValidation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.onRegister(validation.values);
+    props.onRegister(values);
     // reset the inputs only after success
     if (props.showError) {
-      console.log(props.showError)
-      validation.resetForm();
+      console.log(props.showError);
+      resetForm();
     }
   };
 
@@ -24,7 +25,7 @@ function SignUpPopup(props) {
       onClose={props.onClose}
       onSubmit={handleSubmit}
       onLinkClick={props.onLinkClick}
-      disabledButton={!validation.isValid}
+      disabledButton={!isValid}
       showError={props.showError}
     >
       <label className='form__label'>
@@ -33,18 +34,18 @@ function SignUpPopup(props) {
           required
           id='email'
           name='email'
-          value={validation.values.email || ''}
+          value={values.email || ''}
           type='email'
-          onChange={(e) => validation.handleChange(e)}
+          onChange={(e) => handleChange(e)}
           className='form__input'
           placeholder='Enter email'
         />
         <span
           className={`form__input-error name-error ${
-            validation.errors.email && 'form__input-error_visible'
+            errors.email && 'form__input-error_visible'
           }`}
         >
-          {validation.errors.email}
+          {errors.email}
         </span>
       </label>
       <label className='form__label'>
@@ -54,18 +55,18 @@ function SignUpPopup(props) {
           id='password'
           name='password'
           type='password'
-          value={validation.values.password || ''}
-          onChange={(e) => validation.handleChange(e)}
+          value={values.password || ''}
+          onChange={(e) => handleChange(e)}
           minLength='8'
           className='form__input'
           placeholder='Enter password'
         />
         <span
           className={`form__input-error password-error ${
-            validation.errors.password && 'form__input-error_visible'
+            errors.password && 'form__input-error_visible'
           }`}
         >
-          {validation.errors.password}
+          {errors.password}
         </span>
       </label>
       <label className='form__label'>
@@ -75,8 +76,8 @@ function SignUpPopup(props) {
           id='username'
           name='username'
           type='text'
-          value={validation.values.username || ''}
-          onChange={(e) => validation.handleChange(e)}
+          value={values.username || ''}
+          onChange={(e) => handleChange(e)}
           minLength='2'
           maxLength='30'
           className='form__input'
@@ -84,10 +85,10 @@ function SignUpPopup(props) {
         />
         <span
           className={`form__input-error username-error ${
-            validation.errors.username && 'form__input-error_visible'
+            errors.username && 'form__input-error_visible'
           }`}
         >
-          {validation.errors.username}
+          {errors.username}
         </span>
       </label>
     </PopupWithForm>
