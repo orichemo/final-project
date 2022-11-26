@@ -134,6 +134,7 @@ function App() {
     setIsLoggedIn(false);
     setSearchIndex(3);
     setArticle([]);
+    setSavedArticles([]);
     navigate('/');
   };
   // search form submit
