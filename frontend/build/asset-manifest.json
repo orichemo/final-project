@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8f28dedc.css",
+    "main.js": "/static/js/main.638730ee.js",
+    "static/js/787.ed0d862c.chunk.js": "/static/js/787.ed0d862c.chunk.js",
+    "static/media/aboutAothor.png": "/static/media/aboutAothor.5c2ec6568af6cc336006.png",
+    "static/media/header-background.png": "/static/media/header-background.eac7a5b1bf47224f26ba.png",
+    "static/media/roboto-slab-700.woff": "/static/media/roboto-slab-700.7cb09bef6990e87c9e2b.woff",
+    "static/media/roboto-slab-400-regular.woff": "/static/media/roboto-slab-400-regular.b46b2661355d7b1e9e9e.woff",
+    "static/media/roboto-500.woff": "/static/media/roboto-500.cea99d3e3e13a3a599a0.woff",
+    "static/media/roboto-400-regular.woff": "/static/media/roboto-400-regular.49ae34d4cc6b98c00c69.woff",
+    "static/media/roboto-slab-700.woff2": "/static/media/roboto-slab-700.934d56e4123b970a7c16.woff2",
+    "static/media/roboto-slab-400-regular.woff2": "/static/media/roboto-slab-400-regular.c3cd9be60ab77224000b.woff2",
+    "static/media/roboto-400-regular.woff2": "/static/media/roboto-400-regular.176f8f5bd5f02b3abfcf.woff2",
+    "static/media/githubLogo.svg": "/static/media/githubLogo.a6cad5fdaeca1130cc841cb7c58d96d1.svg",
+    "static/media/facebookLogo.svg": "/static/media/facebookLogo.4d94bb09217f91fb4c0d2dd6dbf4b412.svg",
+    "index.html": "/index.html",
+    "static/media/logoutBlackLogo.svg": "/static/media/logoutBlackLogo.4fb874ec404f25a00aed.svg",
+    "static/media/trash.svg": "/static/media/trash.6ef46592426139b22ee6.svg",
+    "static/media/logOutWhiteLogo.svg": "/static/media/logOutWhiteLogo.d449eb0ae09016f254b8.svg",
+    "static/media/close-icon.svg": "/static/media/close-icon.2b67dd6fc0e7b5495c10.svg",
+    "static/media/blueSaveButton.svg": "/static/media/blueSaveButton.8f4cd7583277ece5eec8.svg",
+    "static/media/blackSaveButton.svg": "/static/media/blackSaveButton.926013d49507a2a3ccab.svg",
+    "static/media/whiteSaveButton.svg": "/static/media/whiteSaveButton.d87a36a44a987f6c5abf.svg",
+    "static/media/darkBurgerButton.svg": "/static/media/darkBurgerButton.ede60f895bb9e90cdee9.svg",
+    "static/media/burgerButton.svg": "/static/media/burgerButton.0a6ddfdbe436047db1e6.svg",
+    "main.8f28dedc.css.map": "/static/css/main.8f28dedc.css.map",
+    "main.638730ee.js.map": "/static/js/main.638730ee.js.map",
+    "787.ed0d862c.chunk.js.map": "/static/js/787.ed0d862c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8f28dedc.css",
+    "static/js/main.638730ee.js"
+  ]
+}
